@@ -1,1 +1,6 @@
-<p>profile works!</p>
+<h1>Profile</h1>
+<ul>
+  <li *ngFor="let user of users">
+    {{ user.name }} - {{ user.email }}
+  </li>
+</ul>

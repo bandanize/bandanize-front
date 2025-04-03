@@ -1,9 +1,16 @@
-<h1>Angular Router App</h1>
-<nav>
-  <ul>
-    <li><a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">Home</a></li>
-    <li><a routerLink="/profile" routerLinkActive="active" ariaCurrentWhenActive="page">Profile</a></li>
-  </ul>
+<nav class="bg-gray-800 text-gray-100 shadow-md">
+  <div class="container mx-auto flex justify-between items-center p-4">
+    <a routerLink="/" class="text-2xl font-bold hover:text-gray-400">Bandanize</a>
+    <div class="flex space-x-4">
+      <a routerLink="/" routerLinkActive="font-bold" class="hover:text-gray-400">Home</a>
+      <a routerLink="/profile" routerLinkActive="font-bold" class="hover:text-gray-400">Profile</a>
+      <ng-container *ngIf="isLoggedIn; else loginLink">
+        <a (click)="logout()" class="hover:text-gray-400 cursor-pointer">Logout</a>
+      </ng-container>
+      <ng-template #loginLink>
+        <a routerLink="/login" routerLinkActive="font-bold" class="hover:text-gray-400">Login</a>
+      </ng-template>
+    </div>
+  </div>
 </nav>
-<!-- The routed views render in the <router-outlet>-->
-<router-outlet />
+<router-outlet></router-outlet>

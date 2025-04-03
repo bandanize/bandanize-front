@@ -2,9 +2,8 @@
   <div class="container mx-auto flex justify-between items-center p-4">
     <a routerLink="/" class="text-2xl font-bold hover:text-gray-400">Bandanize</a>
     <div class="flex space-x-4">
-      <a routerLink="/" routerLinkActive="font-bold" class="hover:text-gray-400">Home</a>
-      <a routerLink="/profile" routerLinkActive="font-bold" class="hover:text-gray-400">Profile</a>
       <ng-container *ngIf="isLoggedIn; else loginLink">
+        <a routerLink="/profile" routerLinkActive="font-bold" class="hover:text-gray-400">Profile</a>
         <a (click)="logout()" class="hover:text-gray-400 cursor-pointer">Logout</a>
       </ng-container>
       <ng-template #loginLink>

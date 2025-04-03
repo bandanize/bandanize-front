@@ -1,1 +1,23 @@
-<p>bands works!</p>
+<div class="container mx-auto p-4">
+    <h1 class="text-2xl font-bold mb-4">Mis Bandas</h1>
+    <div *ngIf="bands.length > 0; else noBands" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div *ngFor="let band of bands" class="bg-gray-800 text-white p-4 rounded-lg shadow-lg">
+        <img [src]="band.photo || 'assets/default-band.png'" alt="Band Photo" class="w-full h-48 object-cover rounded-lg mb-4">
+        <h2 class="text-xl font-bold">{{ band.name }}</h2>
+        <p class="text-sm text-gray-400">{{ band.genre }}</p>
+        <p class="mt-2">{{ band.description }}</p>
+        <p class="text-sm text-gray-400 mt-2"><strong>Ciudad:</strong> {{ band.city }}</p>
+        <div class="mt-4">
+          <h3 class="text-sm font-bold">Redes Sociales:</h3>
+          <div class="flex space-x-4">
+            <a *ngFor="let rrss of band.rrss" [href]="rrss" target="_blank" class="text-blue-400 hover:underline">
+              <fa-icon *ngIf="getIconForRrss(rrss)" [icon]="getIconForRrss(rrss)" class="text-2xl"></fa-icon>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noBands>
+      <p class="text-gray-500">No tienes bandas asociadas.</p>
+    </ng-template>
+  </div>

@@ -36,14 +36,10 @@ export class BandsComponent implements OnInit {
     });
   }
 
-  getIconForRrss(rrss: string): any {
-    if (rrss.includes('instagram')) {
-      return this.icons.instagram;
-    } else if (rrss.includes('youtube')) {
-      return this.icons.youtube;
-    } else if (rrss.includes('facebook')) {
-      return this.icons.facebook;
+  getIconForRrss(platform: string | unknown): any {
+    if (typeof platform !== 'string') {
+      return null;
     }
-    return null;
+    return this.icons[platform] || null;
   }
 }

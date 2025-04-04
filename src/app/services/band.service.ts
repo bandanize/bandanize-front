@@ -13,4 +13,16 @@ export class BandService {
   getMyBands(): Observable<any> {
     return this.http.get(`${this.apiUrl}/my-bands`);
   }
+
+  getBandById(bandId: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/${bandId}`);
+  }
+
+  createBand(userId: number, band: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/create/${userId}`, band);
+  }
+
+  updateBand(bandId: number, band: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${bandId}`, band);
+  }
 }
